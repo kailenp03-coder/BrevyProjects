@@ -321,7 +321,7 @@ header a {
 
 .gallery-grid img {
   width: 100%;
-  height: 260px;
+  height: 420px;
   object-fit: cover;
   border-radius: 16px;
   transition: 0.4s ease;
@@ -527,7 +527,7 @@ header a {
   }
 
   .areas-list {
-    columns: 2;
+    columns: 3;
   }
 
   .faq-layout {
@@ -585,4 +585,236 @@ header a {
   font-size: 28px;
   margin-bottom: 14px;
   color: var(--primary);
+}
+
+/* =====================================================
+   ================================================
+   MASTER MOTION LAYER (APPEND ONLY)
+   ================================================
+===================================================== */
+
+
+/* ====================================
+   HERO FLOATING GRADIENT
+==================================== */
+
+/* ====================================
+   HERO GRADIENT MOVEMENT (VISIBLE)
+==================================== */
+
+.hero-bg {
+  animation: heroGradientMove 20s ease-in-out infinite alternate;
+}
+
+@keyframes heroGradientMove {
+  0% {
+    background-position: 20% 20%, 80% 60%;
+  }
+  100% {
+    background-position: 30% 25%, 70% 55%;
+  }
+}
+
+
+/* ====================================
+   HERO STAGED ENTRANCE BASE STATE
+==================================== */
+
+.hero-pill,
+.hero-premium h1,
+.hero-sub,
+.hero-actions,
+.hero-trust {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+
+
+/* ====================================
+   STRONGER BUTTON PULSE
+==================================== */
+
+.btn.primary {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(15,122,61,0.6);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(15,122,61,0.9);
+  }
+}
+
+
+/* ====================================
+   UNIVERSAL REVEAL BASE STATE
+==================================== */
+
+.service-card,
+.team-card,
+.why-card,
+.review-card,
+.gallery-grid img {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease;
+}
+
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+
+/* ====================================
+   GALLERY HOVER OVERLAY
+==================================== */
+
+.gallery-grid {
+  position: relative;
+}
+
+.gallery-grid img {
+  position: relative;
+  display: block;
+}
+
+.gallery-grid img::after {
+  content: "View Project";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  opacity: 0;
+  transition: 0.4s ease;
+  border-radius: 16px;
+}
+
+.gallery-grid img:hover::after {
+  opacity: 1;
+}
+
+
+/* ====================================
+   TEAM LEFT BORDER GROW ANIMATION
+==================================== */
+
+.team-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 0%;
+  background: var(--primary);
+  transition: height 0.8s ease;
+}
+
+.team-card.reveal-visible::before {
+  height: 100%;
+}
+
+
+/* ====================================
+   CARD HOVER DEPTH
+==================================== */
+
+.team-card,
+.service-card,
+.review-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover,
+.service-card:hover,
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+
+/* ====================================
+   WHY HEX SCALE REVEAL
+==================================== */
+
+.why-card {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s ease;
+}
+
+.why-card.reveal-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* ====================================
+   WHATSAPP FLOAT BOUNCE + GLOW
+==================================== */
+
+.whatsapp-float {
+  animation: whatsappBounce 8s infinite;
+  transition: box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  box-shadow: 0 0 18px rgba(37,211,102,0.7);
+}
+
+@keyframes whatsappBounce {
+  0%, 90%, 100% {
+    transform: translateY(0);
+  }
+  95% {
+    transform: translateY(-8px);
+  }
+}
+
+
+/* ====================================
+   HEADER SHRINK TRANSITION
+==================================== */
+
+header {
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.scrolled {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+
+/* ====================================
+   NAV UNDERLINE HOVER
+==================================== */
+
+.nav-links a {
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s ease;
+}
+
+.nav-links a:hover {
+  border-bottom: 2px solid var(--primary);
+}
+
+
+/* ====================================
+   FAQ ICON ROTATION SMOOTHNESS
+==================================== */
+
+.faq-icon {
+  transition: transform 0.3s ease;
 }
