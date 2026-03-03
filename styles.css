@@ -170,15 +170,17 @@ header a {
   display: flex;
   align-items: center;
   background: linear-gradient(135deg, #f4fff6, #ffffff);
+  overflow: hidden;
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(600px 400px at 20% 20%, rgba(15,122,61,0.25), transparent 60%),
-    radial-gradient(500px 300px at 80% 60%, rgba(193,18,31,0.15), transparent 65%);
-}
+/* ====================================
+   HERO – VISIBLE FLOATING BACKGROUND
+==================================== */
+
+/* ====================================
+   HERO – TRUE DRIFTING GRADIENT
+==================================== */
+
 
 .hero-content {
   position: relative;
@@ -587,28 +589,6 @@ header a {
   color: var(--primary);
 }
 
-/* =====================================================
-   ================================================
-   MASTER MOTION LAYER (APPEND ONLY)
-   ================================================
-===================================================== */
-
-
-/* ====================================
-   HERO FLOATING GRADIENT
-==================================== */
-
-/* ====================================
-   HERO GRADIENT MOVEMENT (VISIBLE)
-==================================== */
-
-/* ====================================
-   HERO TRUE FLOATING GRADIENT
-==================================== */
-
-.hero-bg {
-  outline: 2px solid red;
-}
 
 
 /* ====================================
@@ -838,4 +818,143 @@ header.scrolled {
 .faq-item.active .faq-answer {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ====================================
+   HERO – TRUE BREATHING BACKGROUND
+==================================== */
+
+.hero-premium {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f4fff6, #ffffff);
+  overflow: hidden;
+}
+
+/* Base static background */
+/* ====================================
+   HERO TRUE MOVING GLOW
+==================================== */
+
+.hero-bg {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  left: -20%;
+  z-index: 0;
+
+  background:
+    radial-gradient(600px 400px at 30% 30%, rgba(15,122,61,0.4), transparent 60%),
+    radial-gradient(500px 300px at 70% 70%, rgba(193,18,31,0.3), transparent 65%);
+
+  animation: heroMove 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroMove {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(-80px, -50px);
+  }
+}
+
+/* Keep content above */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* =====================================================
+   ABOUT – EDITORIAL STYLE
+===================================================== */
+
+.about-editorial {
+  background: #f4f4ef;
+  padding: 140px 0;
+}
+
+.about-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 80px;
+}
+
+/* LEFT SIDE */
+
+.about-badge {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.about-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  margin-bottom: 30px;
+  color: var(--primary);
+}
+
+.about-title span {
+  color: var(--accent);
+}
+
+.about-text {
+  max-width: 420px;
+  line-height: 1.7;
+}
+
+/* RIGHT SIDE */
+
+.about-right {
+  position: relative;
+}
+
+.about-image-stack {
+  position: relative;
+  background: #e6e3db;
+  padding: 30px;
+  display: inline-block;
+}
+
+.about-image-stack img {
+  width: 100%;
+  display: block;
+}
+
+/* Slight layered effect */
+
+.about-image-stack::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  background: #d9e8df;
+  z-index: -1;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .about-wrap {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
 }
