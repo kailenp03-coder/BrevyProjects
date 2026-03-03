@@ -527,7 +527,7 @@ header a {
   }
 
   .areas-list {
-    columns: 3;
+    columns: 2;
   }
 
   .faq-layout {
@@ -817,4 +817,62 @@ header.scrolled {
 
 .faq-icon {
   transition: transform 0.3s ease;
+}
+
+/* ====================================
+   GALLERY – MASONRY STYLE
+==================================== */
+
+.gallery-grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;              /* Important for masonry */
+  margin-bottom: 20px;
+  break-inside: avoid;
+  border-radius: 16px;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Responsive Masonry */
+
+@media (max-width: 992px) {
+  .gallery-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    column-count: 1;
+  }
+}
+
+/* ====================================
+   FAQ MOBILE TEXT FIX
+==================================== */
+
+.faq-question {
+  color: var(--dark);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.faq-question span {
+  color: inherit;
+}
+
+.faq-answer {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  opacity: 1;
+  transform: translateY(0);
 }
