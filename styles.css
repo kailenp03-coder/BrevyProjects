@@ -607,16 +607,7 @@ header a {
 ==================================== */
 
 .hero-bg {
-  animation: heroFloat 18s ease-in-out infinite alternate;
-}
-
-@keyframes heroFloat {
-  0% {
-    transform: translateY(0px) scale(1);
-  }
-  100% {
-    transform: translateY(-30px) scale(1.08);
-  }
+  outline: 2px solid red;
 }
 
 
